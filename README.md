@@ -23,27 +23,34 @@ MCP server for **The Culture** — a fashion-focused social media app. Exposes S
 | `call_ad_ctr_model` | `TheCulture-ad-ctr-model` | Tabular → click probability |
 | `call_recommendation_engine` | `TheCulture-recommendation-engine` | User + posts → ranked affinity scores |
 
-## Local setup (Claude Code / Claude Desktop)
+## Running the server
+
+This server uses the MCP **Streamable HTTP** transport (stateless mode). It listens on `PORT` (default `3000`) and exposes:
+
+- `POST /mcp` — MCP JSON-RPC endpoint
+- `GET /health` — health check, returns `{"status":"ok"}`
 
 ```bash
 npm install
 npm run build
+SUPABASE_URL=... SUPABASE_SERVICE_ROLE_KEY=... HF_TOKEN=... HF_USERNAME=Dc-4nderson npm start
 ```
 
-Add to your `claude_desktop_config.json`:
+For local development without a build step: `npm run dev` (uses `tsx`).
+
+### Deploying
+
+Deploy anywhere that runs a Node HTTP server (Render, Railway, Fly.io, etc.). Set the same four env vars (`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `HF_TOKEN`, `HF_USERNAME`) in the platform's environment config, and make sure the platform's assigned `PORT` is respected (it is, via `process.env.PORT`).
+
+### Connecting a client (Claude Code / Claude Desktop)
+
+Point the client at the deployed `/mcp` URL:
 
 ```json
 {
   "mcpServers": {
     "the-culture": {
-      "command": "node",
-      "args": ["/absolute/path/to/the-culture-mcp/dist/index.js"],
-      "env": {
-        "SUPABASE_URL": "https://vzqsgnyrrjxfzratmclo.supabase.co",
-        "SUPABASE_SERVICE_ROLE_KEY": "your_key",
-        "HF_TOKEN": "your_token",
-        "HF_USERNAME": "Dc-4nderson"
-      }
+      "url": "https://your-deployment.example.com/mcp"
     }
   }
 }
