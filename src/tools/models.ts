@@ -6,12 +6,12 @@ export function registerModelTools(server: McpServer) {
 
   server.tool(
     "call_archetype_model",
-    "Classify the style archetype of a garment or outfit image using fashion-multitask-v1. Returns predicted archetype label(s) and confidence scores.",
+    "Classify the style archetype of a garment or outfit image using TheCulture-fashion-archetype-labeler. Returns predicted archetype label(s) and confidence scores.",
     {
       image_url: z.string().url().describe("Publicly accessible URL of the garment or outfit image"),
     },
     async ({ image_url }) => {
-      const result = await callHFInference("fashion-multitask-v1", { inputs: image_url });
+      const result = await callHFInference("TheCulture-fashion-archetype-labeler", { inputs: image_url });
       return { content: [{ type: "text" as const, text: JSON.stringify(result, null, 2) }] };
     }
   );

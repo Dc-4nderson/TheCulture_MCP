@@ -17,7 +17,7 @@ MCP server for **The Culture** — a fashion-focused social media app. Exposes S
 ### Model Tools (Hugging Face)
 | Tool | Model | Task |
 |---|---|---|
-| `call_archetype_model` | `fashion-multitask-v1` | Image → style archetype |
+| `call_archetype_model` | `TheCulture-fashion-archetype-labeler` | Image → style archetype |
 | `call_content_moderation` | `TheCulture-content-moderation-model` | Text → safe/unsafe + sub_category |
 | `call_trend_forecaster` | `TheCulture-trend-forecasting-model` | Tabular → trend lifecycle stage |
 | `call_ad_ctr_model` | `TheCulture-ad-ctr-model` | Tabular → click probability |
