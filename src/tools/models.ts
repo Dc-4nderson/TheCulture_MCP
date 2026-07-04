@@ -24,7 +24,7 @@ export function registerModelTools(server: McpServer) {
     },
     async ({ text }) => {
       const result = await callHFInference(
-        "the-culture-content-moderation-model",
+        "TheCulture-content-moderation-model",
         { inputs: text }
       );
       return { content: [{ type: "text" as const, text: JSON.stringify(result, null, 2) }] };
@@ -52,7 +52,7 @@ export function registerModelTools(server: McpServer) {
     },
     async (inputs) => {
       const result = await callHFInference(
-        "the-culture-trend-forecasting-model",
+        "TheCulture-trend-forecasting-model",
         { inputs }
       );
       return { content: [{ type: "text" as const, text: JSON.stringify(result, null, 2) }] };
@@ -82,7 +82,7 @@ export function registerModelTools(server: McpServer) {
     },
     async ({ threshold, ...inputs }) => {
       const result = await callHFInference(
-        "the-culture-ad-ctr-model",
+        "TheCulture-ad-ctr-model",
         { inputs, threshold }
       );
       return { content: [{ type: "text" as const, text: JSON.stringify(result, null, 2) }] };
@@ -102,7 +102,7 @@ export function registerModelTools(server: McpServer) {
     },
     async (inputs) => {
       const result = await callHFInference(
-        "the-culture-recommendation-engine",
+        "TheCulture-recommendation-engine",
         { inputs }
       );
       return { content: [{ type: "text" as const, text: JSON.stringify(result, null, 2) }] };

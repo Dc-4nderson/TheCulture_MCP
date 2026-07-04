@@ -18,10 +18,10 @@ MCP server for **The Culture** — a fashion-focused social media app. Exposes S
 | Tool | Model | Task |
 |---|---|---|
 | `call_archetype_model` | `fashion-multitask-v1` | Image → style archetype |
-| `call_content_moderation` | `the-culture-content-moderation-model` | Text → safe/unsafe + sub_category |
-| `call_trend_forecaster` | `the-culture-trend-forecasting-model` | Tabular → trend lifecycle stage |
-| `call_ad_ctr_model` | `the-culture-ad-ctr-model` | Tabular → click probability |
-| `call_recommendation_engine` | `the-culture-recommendation-engine` | User + posts → ranked affinity scores |
+| `call_content_moderation` | `TheCulture-content-moderation-model` | Text → safe/unsafe + sub_category |
+| `call_trend_forecaster` | `TheCulture-trend-forecasting-model` | Tabular → trend lifecycle stage |
+| `call_ad_ctr_model` | `TheCulture-ad-ctr-model` | Tabular → click probability |
+| `call_recommendation_engine` | `TheCulture-recommendation-engine` | User + posts → ranked affinity scores |
 
 ## Local setup (Claude Code / Claude Desktop)
 
